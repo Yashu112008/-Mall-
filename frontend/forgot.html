@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mall Manager - Forgot password</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-card">
+    <h2>Forgot password</h2>
+    <p class="sub">Enter your email and we will send a reset link</p>
+    <form id="f" novalidate>
+      <div class="field"><label for="email">Email</label><input class="input" id="email" type="email" maxlength="120" autocomplete="username"></div>
+      <div class="form-error" id="err"></div>
+      <div class="form-ok" id="ok"></div>
+      <button class="btn" id="btn" type="submit">Send reset link</button>
+    </form>
+    <div class="back"><a href="login.html">&larr; Back to login</a></div>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/forgot.js"></script>
+</body>
+</html>

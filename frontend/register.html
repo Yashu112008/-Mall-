@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mall Manager - Create account</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-card">
+    <h2>Create account</h2>
+    <p class="sub">New accounts need admin approval before login</p>
+    <form id="f" novalidate>
+      <div class="field"><label for="name">Full name</label><input class="input" id="name" maxlength="100" autocomplete="name"></div>
+      <div class="field"><label for="email">Email</label><input class="input" id="email" type="email" maxlength="120" autocomplete="username"></div>
+      <div class="field"><label for="pw">Password</label><input class="input" id="pw" type="password" maxlength="72" autocomplete="new-password"></div>
+      <div class="field"><label for="pw2">Confirm password</label><input class="input" id="pw2" type="password" maxlength="72" autocomplete="new-password"></div>
+      <p class="hint">Min 10 characters with an uppercase letter, a lowercase letter and a number.</p>
+      <div class="form-error" id="err"></div>
+      <div class="form-ok" id="ok"></div>
+      <button class="btn" id="btn" type="submit">Create account</button>
+    </form>
+    <div class="back"><a href="login.html">&larr; Back to login</a></div>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>
