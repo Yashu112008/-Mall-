@@ -14,7 +14,14 @@ const { authenticate } = require('./src/middleware/auth');
 const { notFound, errorHandler } = require('./src/middleware/error');
 
 const app = express();
-app.use(cors());
+app.set('trust proxy', 1);
+app.use(cors((req, cb) => {
+  const origin = req.header('Origin');
+  let sameSite = false;
+  try { sameSite = !!origin && new URL(origin).host === req.get('host'); } catch { /* ignore */ }
+  if (origin && !sameSite && !origins.includes(origin)) return cb(new Error('CORS blocked'));
+  cb(null, { origin: true, methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'] });
+}));
 app.disable('x-powered-by');
 app.use(helmet({
   contentSecurityPolicy: { useDefaults: true, directives: { 'upgrade-insecure-requests': null } },
