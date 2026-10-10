@@ -86,7 +86,7 @@ router.post('/register', limiter(5),
       audit({ ip: req.ip }, 'register', 'users', info.lastInsertRowid);
     }
     // Same answer whether or not the email existed (does not leak who has an account)
-    res.status(201).json({ message: 'Account created. An admin must approve it before you can login.' });
+    res.status(201).json({ message: 'Account created you can login.' });
   });
 
 router.post('/forgot-password', limiter(5),
