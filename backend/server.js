@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-app.use(cors));
 const rateLimit = require('express-rate-limit');
 const path = require('path');
 
@@ -15,6 +14,7 @@ const { authenticate } = require('./src/middleware/auth');
 const { notFound, errorHandler } = require('./src/middleware/error');
 
 const app = express();
+app.use(cors());
 app.disable('x-powered-by');
 app.use(helmet({
   contentSecurityPolicy: { useDefaults: true, directives: { 'upgrade-insecure-requests': null } },
