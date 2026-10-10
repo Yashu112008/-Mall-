@@ -8,7 +8,7 @@ function authenticate(req, res, next) {
   try {
     const p = jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
     const u = db.prepare('SELECT id,name,email,role,active,token_version FROM users WHERE id=?').get(p.sub);
-    if (!u || !u.active || u.token_version !== p.tv) return res.status(401).json({ error: 'Session expired, login again' });
+    if (!u || u.token_version !== p.tv) return res.status(401).json({ error: 'Session expired, login again' });
     req.user = u;
     next();
   } catch {
