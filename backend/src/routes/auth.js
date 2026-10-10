@@ -82,7 +82,7 @@ router.post('/register', limiter(5),
     const { name, email, password } = req.body;
     const hash = bcrypt.hashSync(password, 12);
     if (!db.prepare('SELECT id FROM users WHERE email=?').get(email)) {
-      const info = db.prepare('INSERT INTO users (name,email,password_hash,role,active) VALUES (?,?,?,?,0)').run(name, email, hash, 'staff');
+      const info = db.prepare('INSERT INTO users (name,email,password_hash,role,active) VALUES (?,?,?,?,1)').run(name, email, hash, 'staff');
       audit({ ip: req.ip }, 'register', 'users', info.lastInsertRowid);
     }
     // Same answer whether or not the email existed (does not leak who has an account)
